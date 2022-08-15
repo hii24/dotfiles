@@ -1,0 +1,32 @@
+[user]
+  name = Serhii Valko
+  email = valkoserhii@gmail.com
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = true
+
+[push]
+  default = current
+  autoSetupRemote = true
+
+[diff]
+  algorithm = histogram
+  colorMoved = zebra
+
+[merge]
+  conflictstyle = zdiff3
+
+[rerere]
+  enabled = true
+
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  wip = !git add -A && git commit -m 'wip' --no-verify
+  unwip = !git log -n 1 | grep -q 'wip' && git reset HEAD~1
+  unstage = reset HEAD --
+  fixup = !git commit --fixup=HEAD && GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash HEAD~2
+  amend = commit --amend --no-edit
+  prune-merged = !git branch --merged main | grep -v '^\\*\\| main' | xargs -n 1 git branch -d
