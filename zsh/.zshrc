@@ -34,7 +34,7 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats ' %F{cyan}%b%f'
 setopt PROMPT_SUBST
-PROMPT='%F{green}%~%f${vcs_info_msg_0_} %F{magenta}❯%f '
+PROMPT='%F{green}%~%f${vcs_info_msg_0_}\n%F{magenta}❯%f '
 
 # ──── nvm (lazy-load to keep shell startup fast) ────────────────
 export NVM_DIR="$HOME/.nvm"
